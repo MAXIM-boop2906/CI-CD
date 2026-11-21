@@ -1,0 +1,36 @@
+@baseUrl = http://127.0.0.1:8000
+
+### Список продуктов
+GET {{baseUrl}}/products/
+
+### Создать продукт
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "name": "Помидоры",
+  "description": "Свежие красные томаты"
+}
+
+### Поиск продуктов по имени/описанию
+GET {{baseUrl}}/products/?search=помид
+
+### Создать склад с товарами (подставьте существующий id продукта)
+POST {{baseUrl}}/stocks/
+Content-Type: application/json
+
+{
+  "address": "Москва, склад №1",
+  "products": [
+    {"id": 1, "price": "15.50"}
+  ]
+}
+
+### Список складов
+GET {{baseUrl}}/stocks/
+
+### Склады по ID продукта
+GET {{baseUrl}}/stocks/?products=1
+
+### Дополнительный поиск складов по названию/описанию продукта
+GET {{baseUrl}}/stocks/?search=помид
